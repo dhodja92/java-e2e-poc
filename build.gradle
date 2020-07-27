@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.dhodja92'
+version '0.1.0'
+description = 'Java E2E testing POC'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.apache.logging.log4j:log4j-api:$log4jVersion"
+    compile "org.apache.logging.log4j:log4j-core:$log4jVersion"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+
+    testCompile "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testCompile "io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion"
+
+    testImplementation "io.cucumber:cucumber-java:$cucumberJavaVersion"
+    testImplementation "io.cucumber:cucumber-junit:$cucumberJavaVersion"
+    testImplementation "org.awaitility:awaitility:$awaitilityVersion"
+}
